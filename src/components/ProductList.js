@@ -27,7 +27,7 @@ const ProductList = () => {
     if (data?.length) {
         return (
             <div>
-                <h2>Your Total: ${total.toFixed(2)}</h2>
+                <h2>Your Total: <span data-testid={"total"}>${total.toFixed(2)}</span></h2>
                 <section style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {data.map((product) => (
                         <div
@@ -41,7 +41,7 @@ const ProductList = () => {
                                 alt={product.title}
                             />
                             <p>${product.price.toFixed(2)}</p>
-                            <button onClick={() => addToCart(product)}>
+                            <button data-testid={`btn-${product.id}`} onClick={() => addToCart(product)}>
                                 Add To Cart
                             </button>
                         </div>

@@ -23,7 +23,14 @@ describe('ProductList', () => {
         expect(await screen.findByText('$123.00')).toBeInTheDocument();
     });
 
-    it('shows an error message', async () => {
-        // TODO: add your tests here
-    });
+    it('adds the correct amount', async () => {
+        render(<ProductList />);
+
+        expect((await screen.findByTestId("total")).innerHTML).toEqual("$0.00")
+    
+        userEvent.click(await screen.findByTestId("btn-id"));
+        
+        expect((await screen.findByTestId("total")).innerHTML).toEqual("$123.00")
+
+ });
 });
